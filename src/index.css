@@ -1,108 +1,233 @@
-* {
+/* ✅ Reset CSS (important) */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
+/* ✅ Root variables (design system) */
+:root {
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --background: #f5f7fa;
+  --text: #1e293b;
+  --text-light: #64748b;
+  --border: #e2e8f0;
+  --white: #ffffff;
+
+  --radius: 10px;
+  --shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+
+  --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+}
+
+/* ✅ Global styles */
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: #f2f2f2;
-  color: #333;
+  font-family: var(--font-main);
+  background-color: var(--background);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
 }
 
-.home-page {
-  height: 100vh;
+/* ✅ Links */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ✅ Buttons global */
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+/* ✅ Inputs */
+input {
+  font-family: inherit;
+  outline: none;
+  border: 1px solid var(--border);
+  padding: 10px;
+  border-radius: var(--radius);
+  transition: border 0.2s;
+}
+
+input:focus {
+  border-color: var(--primary);
+}
+
+/* ✅ Layout utility */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* ✅ Title styles */
+h1 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+/* ✅ Buttons (primary style) */
+.btn {
+  padding: 12px 20px;
+  border-radius: var(--radius);
+  background-color: var(--primary);
+  color: white;
+}
+
+.btn:hover {
+  background-color: var(--primary-hover);
+}
+
+/* ✅ Cards (dashboard style) */
+.card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+}
+
+/* ✅ Centered layout helper */
+.centered {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.login-card {
-  background: #ffffff;
-  padding: 40px 32px;
-  border-radius: 14px;
-  border: 1px solid #e0e0e0;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
-  width: 100%;
-  max-width: 380px;
+/* ✅ Flex gap helper */
+.flex {
+  display: flex;
+  gap: 20px;
+}
+
+/* ✅ Error message */
+.error {
+  color: red;
+  font-size: 0.9rem;
+}
+
+/* ✅ Success message */
+.success {
+  color: green;
+  font-size: 0.9rem;
+}
+
+/* ✅ Responsive */
+@media (max-width: 768px) {
+  .flex {
+    flex-direction: column;
+  }
+}
+/* Page-specific styles */
+.home-page,
+.auth-page,
+.dashboard-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--background);
+  padding: 20px;
+}
+
+.login-card,
+.auth-card {
+  background: var(--white);
+  padding: 40px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  width: min(420px, 100%);
+}
+
+.login-card h1,
+.auth-title,
+.dashboard-title {
+  margin-bottom: 24px;
   text-align: center;
 }
 
-.login-card h1 {
-  font-size: 28px;
-  margin-bottom: 8px;
-  color: #222;
-}
-
 .login-card p {
-  font-size: 14px;
-  color: #777;
   margin-bottom: 24px;
+  color: var(--text-light);
 }
 
-.login-form {
+.login-button,
+.auth-button {
+  width: 100%;
+  padding: 12px 18px;
+  border-radius: var(--radius);
+  background-color: var(--primary);
+  color: white;
+}
+
+.login-button:hover,
+.auth-button:hover {
+  background-color: var(--primary-hover);
+}
+
+.auth-form {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 15px;
+  width: 100%;
 }
 
-.input-field {
-  padding: 12px 14px;
-  border: 1px solid #d6d6d6;
-  border-radius: 8px;
-  background: #fafafa;
-  font-size: 15px;
-  outline: none;
-  transition: border-color 0.2s, background-color 0.2s;
+.auth-input {
+  width: 100%;
+  padding: 10px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
 }
 
-.input-field:focus {
-  border-color: #999;
-  background: #fff;
+.dashboard-page {
+  flex-direction: column;
+  padding-top: 60px;
 }
 
-.login-button {
-  padding: 12px 14px;
-  border: none;
-  border-radius: 8px;
-  background: #333;
-  color: white;
-  font-size: 15px;
+.dashboard-title {
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+.dashboard-cards {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.dashboard-card {
+  width: 250px;
+  min-height: 150px;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 20px;
 }
 
-.login-button:hover {
-  background: #555;
-}
-
-.login-button:disabled {
-  background: #888;
-  cursor: not-allowed;
-}
-
-.error-text {
-  margin-top: 16px;
-  color: #d9534f;
-  font-size: 14px;
-}
-
-.token-box {
-  margin-top: 18px;
-  padding: 14px;
-  background: #f7f7f7;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  text-align: left;
-  word-break: break-all;
-}
-
-.token-box p {
-  margin-bottom: 8px;
-  color: #333;
-}
-
-.token-box span {
-  font-size: 13px;
-  color: #555;
+.dashboard-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
 }

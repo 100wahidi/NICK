@@ -1,19 +1,17 @@
-import { Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import MarketAccess from './pages/MarketAccess';
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import SignIn from "./pages/SignIn";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (
-    <div>
-
-      <div className="container">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/page1" element={<MarketAccess />} />
-        </Routes>
-      </div>
-    </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
   );
 }
 
