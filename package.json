@@ -1,15 +1,22 @@
 {
   "name": "my-react-router-app",
+  "homepage": "https://100wahidi.github.io/react-gh-pages",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+     "predeploy": "npm run build",
+     "deploy": "gh-pages -d build",
     "lint": "eslint .",
+
+
+
     "preview": "vite preview"
   },
   "dependencies": {
+    "gh-pages": "^6.3.0",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
     "react-router-dom": "^7.17.0",
