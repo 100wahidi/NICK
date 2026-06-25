@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { userAPI } from "../Api/api";
+import { userAPI } from "../api/api"; // Correction de la casse "api" en minuscules
 import { useNavigate } from "react-router-dom";
+import { setToken } from "../Share/token"; // Import du gestionnaire de token partagé
 
 function Login() {
   const [form, setForm] = useState({
@@ -25,19 +26,19 @@ function Login() {
 
       console.log("✅ Token reçu:", data);
 
-      // ✅ stocker token
+      // Stockage propre du token en utilisant le module partagé
       if (data.access_token) {
-        localStorage.setItem("token", data.access_token);
+        setToken(data.access_token); // Utilise désormais la clé uniforme "access_token"
       }
 
       alert("Login successful ✅");
 
-      // ✅ redirection
+      // Redirection vers le tableau de bord
       navigate("/dashboard");
 
     } catch (error) {
       console.error(error);
-      alert(error.message);
+      alert(error.message || "Erreur lors de la connexion ❌");
     }
   };
 

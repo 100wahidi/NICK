@@ -20,7 +20,7 @@ function SignIn() {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://127.0.0.1:3000/sign_in", {
+      const response = await fetch("https://alice-production-e7b7.up.railway.app/sign_in", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
