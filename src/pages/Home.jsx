@@ -41,21 +41,21 @@ function Home() {
           <h2 className="section-title">Pourquoi choisir Market Access ?</h2>
           <div className="features-grid">
             <article className="feature-card">
-              <div className="feature-icon">📈</div>
+              <div className="feature-icon"></div>
               <h3>Trading avancé</h3>
-              <p>Accédez à des outils analytiques et suivez l'exécution de vos stratégies en temps réel.</p>
+              <p>Accédez à des outils analytiques et suivez l'exécution de vos stratégies en temps réel</p>
             </article>
 
             <article className="feature-card">
-              <div className="feature-icon">💼</div>
+              <div className="feature-icon"></div>
               <h3>Gestion Sales</h3>
-              <p>Pilotez la relation client et suivez vos indicateurs de performance commerciale (KRI).</p>
+              <p>Pilotez la relation client et suivez vos indicateurs de performance commerciale</p>
             </article>
 
             <article className="feature-card">
-              <div className="feature-icon">🔒</div>
+              <div className="feature-icon"></div>
               <h3>Sécurité Maximale</h3>
-              <p>Vos sessions et vos données sont protégées par des protocoles d'authentification stricts.</p>
+              <p>Vos sessions et vos données sont protégées par des protocoles d'authentification stricts</p>
             </article>
           </div>
         </div>
