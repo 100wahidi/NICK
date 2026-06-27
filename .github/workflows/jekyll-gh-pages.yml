@@ -20,9 +20,9 @@ jobs:
           npm install
       - name: Build app
         run: |
-          npm run dist
+          npm run build
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: build
+          folder: dist
           clean: true
