@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { userAPI } from "../api/api"; // Correction de la casse "api" en minuscules
 
 function SignIn() {
   const [form, setForm] = useState({
@@ -20,13 +21,7 @@ function SignIn() {
     e.preventDefault();
 
     try {
-      const response = await fetch("https://alice-production-e7b7.up.railway.app/sign_in", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(form),
-      });
+      const response = await userAPI.signIn(form);
 
       const data = await response.json();
 
