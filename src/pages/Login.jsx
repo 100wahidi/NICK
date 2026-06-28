@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { userAPI } from "../api/api"; // Correction de la casse "api" en minuscules
+import { userAPI } from "../API_Settings/api"; // Correction de la casse "api" en minuscules
 import { useNavigate } from "react-router-dom";
 import { setToken } from "../Share/token"; // Import du gestionnaire de token partagé
 

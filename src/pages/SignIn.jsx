@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { userAPI } from "../api/api"; // Correction de la casse "api" en minuscules
+import { userAPI } from "../API_Settings/api"; // Correction de la casse "api" en minuscules
 
 function SignIn() {
   const [form, setForm] = useState({
