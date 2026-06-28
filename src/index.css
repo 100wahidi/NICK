@@ -1,0 +1,395 @@
+/* ==========================================================================
+   1. RESET & SYSTEM CONFIG (Production-ready)
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Design Palette */
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --background: #f5f7fa;
+  --text: #1e293b;
+  --text-light: #64748b;
+  --border: #e2e8f0;
+  --white: #ffffff;
+
+  /* Sizing & Shadows */
+  --radius: 10px;
+  --shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  /* Layout Consts */
+  --header-height: 70px;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--background);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  transition: all 0.2s ease-in-out;
+}
+
+input {
+  font-family: inherit;
+  outline: none;
+  border: 1px solid var(--border);
+  padding: 10px;
+  border-radius: var(--radius);
+  transition: border 0.2s;
+}
+
+input:focus {
+  border-color: var(--primary);
+}
+
+/* ==========================================================================
+   2. GLOBAL UTILITIES & CORE LAYOUT
+   ========================================================================== */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+h1 { font-size: 2rem; font-weight: 600; }
+h2 { font-size: 1.5rem; }
+
+.btn {
+  padding: 10px 20px;
+  border-radius: var(--radius);
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+/* ==========================================================================
+   3. MAIN HEADER STYLES (Professional Pro Pattern)
+   ========================================================================== */
+.main-header {
+  background-color: var(--white);
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.nav-link {
+  color: var(--text-light);
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: var(--primary);
+}
+
+/* Header Action Buttons */
+.btn-primary-header {
+  background-color: var(--primary);
+  color: var(--white);
+  padding: 8px 16px;
+  font-size: 0.9rem;
+}
+
+.btn-primary-header:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn-logout {
+  color: #ef4444;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 6px 12px;
+  border: 1px solid #fee2e2;
+  border-radius: var(--radius);
+  background-color: #fff5f5;
+}
+
+.btn-logout:hover {
+  background-color: #fee2e2;
+  border-color: #fca5a5;
+}
+
+/* ==========================================================================
+   4. PAGES & CORE CARDS STYLES
+   ========================================================================== */
+.home-page,
+.auth-page,
+.dashboard-page {
+  min-height: calc(100vh - var(--header-height));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--background);
+  padding: 40px 20px;
+}
+
+.login-card,
+.auth-card {
+  background: var(--white);
+  padding: 40px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  width: min(420px, 100%);
+}
+
+.login-card h1,
+.auth-title,
+.dashboard-title {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.login-card p {
+  margin-bottom: 24px;
+  color: var(--text-light);
+}
+
+.login-button,
+.auth-button {
+  width: 100%;
+  padding: 12px 18px;
+  border-radius: var(--radius);
+  background-color: var(--primary);
+  color: white;
+  font-weight: 500;
+}
+
+.login-button:hover,
+.auth-button:hover {
+  background-color: var(--primary-hover);
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+
+.dashboard-page {
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 60px;
+}
+
+.dashboard-title {
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+.dashboard-cards {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.dashboard-card {
+  width: 250px;
+  min-height: 150px;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 20px;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+}
+
+/* ==========================================================================
+   5. RESPONSIVE DESIGN (Media Queries)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .header-nav {
+    gap: 16px;
+  }
+  .nav-link {
+    font-size: 0.9rem;
+  }
+  .dashboard-cards {
+    flex-direction: column;
+  }
+}
+/* ==========================================================================
+   4b. HOME PAGE SPECIFIC STYLES (Modern Pro Grid & Hero)
+   ========================================================================== */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Hero Section */
+.hero-section {
+  padding: 80px 0;
+  background: radial-gradient(circle at top right, rgba(37, 99, 235, 0.05), transparent 40%);
+  text-align: center;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 800px;
+}
+
+.hero-title {
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  line-height: 1.2;
+  color: var(--text);
+  margin-bottom: 20px;
+}
+
+.text-gradient {
+  color: var(--primary);
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: var(--text-light);
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn-primary-home {
+  background-color: var(--primary);
+  color: var(--white);
+  padding: 14px 28px;
+  font-size: 1rem;
+}
+
+.btn-primary-home:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+.btn-secondary-home {
+  background-color: var(--white);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 14px 28px;
+  font-size: 1rem;
+}
+
+.btn-secondary-home:hover {
+  background-color: #f8fafc;
+  border-color: var(--text-light);
+  transform: translateY(-1px);
+}
+
+/* Features Section */
+.features-section {
+  padding: 60px 0 100px 0;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 48px;
+  font-size: 1.8rem;
+  color: var(--text);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+}
+
+.feature-card {
+  background: var(--white);
+  padding: 32px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(226, 232, 240, 0.6);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.feature-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+
+.feature-card p {
+  font-size: 0.95rem;
+  color: var(--text-light);
+  line-height: 1.6;
+}
