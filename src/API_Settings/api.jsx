@@ -1,4 +1,4 @@
-const apiUrl = import.meta.env.VITE_API_URL;
+const apiUrl = "https://alice-production-9ec8.up.railway.app";
 // ✅ Generic request
 export async function apiRequest(endpoint, method = "POST", data = null, token = null) {
   try {
