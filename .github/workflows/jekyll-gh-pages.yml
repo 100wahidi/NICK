@@ -1,47 +1,28 @@
-name: Deploy React App to GitHub Pages
-
+name: React CI/CD Pipeline
 on:
   push:
     branches:
-      - master   # change to main if needed
-
+      - master
 permissions:
   contents: write
-
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
-
     steps:
-      # ✅ 1. Checkout repository
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      # ✅ 2. Setup Node.js
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
         with:
-          node-version: 20
-          cache: npm
-
-      # ✅ 3. Install dependencies
+          node-version: '20'
       - name: Install dependencies
-        run: npm ci
-
-      # ✅ 4. Build Vite app
-      - name: Build project
-        run: npm run build
-
-      # ✅ 5. Add SPA fallback (important for React Router)
-      - name: Add 404 fallback
-        run: cp dist/index.html dist/404.html
-
-      # ✅ 6. Deploy to gh-pages branch
+        run: |
+          npm install
+      - name: Build app
+        run: |
+          npm run build
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: gh-pages        # target branch
-          folder: dist             # build output
-          clean: true              # remove old files
-          single-commit: true      # keep branch clean
-``
+          folder: dist
+          clean: true
