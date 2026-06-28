@@ -1,28 +1,45 @@
 name: React CI/CD Pipeline
+
 on:
   push:
     branches:
-      - master
+      - master   # or main if your repo uses main
+
 permissions:
   contents: write
+
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
+
     steps:
+      # ✅ Checkout repo
       - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/checkout@v4
+
+      # ✅ Setup Node
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: 20
+          cache: 'npm'
+
+      # ✅ Install dependencies
       - name: Install dependencies
-        run: |
-          npm install
+        run: npm install
+
+      # ✅ Build app
       - name: Build app
-        run: |
-          npm run build
+        run: npm run build
+
+      # ✅ Add SPA fallback (important for React Router)
+      - name: Add 404 fallback
+        run: cp dist/index.html dist/404.html
+
+      # ✅ Deploy to gh-pages
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
+          branch: gh-pages       # ✅ REQUIRED
           folder: dist
           clean: true
