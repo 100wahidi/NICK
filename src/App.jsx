@@ -4,33 +4,35 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import SignIn from "./pages/SignIn";
 import Dashboard from "./pages/Dashboard";
+import RAG from "./pages/RAG"; // ✅ NEW
 import ProtectedRoute from "./components/ProtectedRoute";
-import EmptyPage from "./components/EmptyPage"; // Ou FeedbackMessage selon vos fichiers
+import EmptyPage from "./components/EmptyPage";
 
 function App() {
   return (
     <Routes>
-      {/* ─── ROUTE PARENTE GLOBALE ─── */}
-      {/* Elle charge MainLayout et applique le Header à tout son arbre inférieur */}
+      {/* ─── GLOBAL LAYOUT ─── */}
       <Route element={<MainLayout />}>
-        
-        {/* 🔓 Routes Publiques Enfants */}
+
+        {/* 🔓 Public routes */}
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signin" element={<SignIn />} />
 
-        {/* 🔐 Routes Protégées Enfants (Double Imbrication Pro) */}
+        {/* 🔐 Protected routes */}
         <Route element={<ProtectedRoute />}>
           <Route path="/dashboard" element={<Dashboard />} />
+
+          {/* ✅ NEW RAG PAGE */}
+          <Route path="/analyser" element={<RAG />} />
         </Route>
 
-        {/* 🧭 Capture d'erreur 404 dans le Layout */}
+        {/* 🧭 404 */}
         <Route path="*" element={<EmptyPage />} />
-        
+
       </Route>
     </Routes>
   );
-  
 }
 
 export default App;
