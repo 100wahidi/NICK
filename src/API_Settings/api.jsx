@@ -1,4 +1,4 @@
-const apiUrl = https://ragapi-production-21f4.up.railway.app";
+const apiUrl = "https://ragapi-production-21f4.up.railway.app";
 // ✅ Generic request
 export async function apiRequest(endpoint, method = "POST", data = null, token = null) {
   try {
