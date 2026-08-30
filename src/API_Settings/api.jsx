@@ -1,4 +1,4 @@
-const apiUrl = "https://alice-production-9ec8.up.railway.app";
+const apiUrl = https://ragapi-production-21f4.up.railway.app";
 // ✅ Generic request
 export async function apiRequest(endpoint, method = "POST", data = null, token = null) {
   try {
@@ -40,9 +40,9 @@ export async function apiRequest(endpoint, method = "POST", data = null, token =
 
 // ✅ API abstraction (PRO)
 export const userAPI = {
-  signIn: (data) => apiRequest("/sign_in", "POST", data),
+  signIn: (data) => apiRequest("/auth/sign_in", "POST", data),
 
-  login: (data) => apiRequest("/login", "POST", data), // ✅ NEW
+  login: (data) => apiRequest("/auth/login", "POST", data), // ✅ NEW
 
   getUsers: () => apiRequest("/users"),
 };
