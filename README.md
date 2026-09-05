@@ -11,9 +11,13 @@ The home page introduces the workflow with a three-step visual guide and a gener
 <img width="1900" height="867" alt="image" src="https://github.com/user-attachments/assets/084dd755-b140-42db-a406-7c65890137a4" />
 
 
-<img width="945" height="435" alt="image" src="https://github.com/user-attachments/assets/16234c00-f3b5-4ba0-92fc-db394fc4e84d" />
+<img width="944" height="435" alt="image" src="https://github.com/user-attachments/assets/901dca83-9f52-4bbc-ba40-920c5985ac31" />
 
 
+<img width="942" height="433" alt="image" src="https://github.com/user-attachments/assets/f326123f-9ce3-4fdb-aec5-b4c67701f899" />
+
+
+<img width="944" height="437" alt="image" src="https://github.com/user-attachments/assets/0467a673-cd16-42b2-8001-e30e6ef47fb0" />
 
 
 ## User Flow
