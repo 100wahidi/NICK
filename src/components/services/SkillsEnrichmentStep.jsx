@@ -97,17 +97,6 @@ export default function SkillsEnrichmentStep({
             </button>
           </div>
 
-          {(manualEntries.experiences.length > 0 || manualEntries.projects.length > 0) && (
-            <div className="mt-5 space-y-2 text-left">
-              {[...manualEntries.experiences.map((item) => ({ ...item, type: "Experience" })), ...manualEntries.projects.map((item) => ({ ...item, type: "Project" }))].map((item, index) => (
-                <div key={`${item.type}-${item.title}-${index}`} className="rounded-lg border border-[#262C36] bg-[#111418] px-3 py-2">
-                  <p className="text-xs font-semibold text-[#F5F7FA]">{item.title} <span className="font-normal text-[#697383]">· {item.type}</span></p>
-                  <p className="mt-1 text-xs text-[#9EA7B3]">{item.content}</p>
-                </div>
-              ))}
-            </div>
-          )}
-
           {entryType && (
             <form onSubmit={submitEntry} className="mt-5 rounded-lg border border-[#262C36] bg-[#111418] p-4 text-left">
               <h4 className="text-sm font-semibold text-[#F5F7FA]">Add {entryType === "experiences" ? "an experience" : "a project"}</h4>

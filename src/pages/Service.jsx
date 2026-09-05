@@ -26,6 +26,20 @@ function normalizeMatches(value) {
   return Array.isArray(value) ? value : [];
 }
 
+function normalizeMatchText(value) {
+  return String(value || "").trim().toLowerCase();
+}
+
+function isManualEntryMatch(item, entries) {
+  const itemTitle = normalizeMatchText(typeof item === "string" ? item : item?.title || item?.name);
+  const itemContent = normalizeMatchText(typeof item === "string" ? item : item?.content || item?.description);
+
+  return entries.some((entry) => (
+    normalizeMatchText(entry.title) === itemTitle &&
+    normalizeMatchText(entry.content) === itemContent
+  ));
+}
+
 export default function ServiceWorkflowPage() {
   const [step, setStep] = useState(1);
   const [jobOffer, setJobOffer] = useState("");
@@ -69,8 +83,12 @@ export default function ServiceWorkflowPage() {
 
   const retrieveMatches = useMatchRetrieval({
     onSuccess: (data) => {
-      const projects = normalizeMatches(data.projects);
-      const experiences = normalizeMatches(data.experiences);
+      const projects = normalizeMatches(data.projects).filter(
+        (item) => !isManualEntryMatch(item, manualEntries.projects)
+      );
+      const experiences = normalizeMatches(data.experiences).filter(
+        (item) => !isManualEntryMatch(item, manualEntries.experiences)
+      );
       setMatches({ projects, experiences });
       setSelectedProjects(projects.map((_, index) => index));
       setSelectedExperiences(experiences.map((_, index) => index));
@@ -128,7 +146,7 @@ export default function ServiceWorkflowPage() {
     setSavingEntryType(type);
     try {
       const saveEntry = type === "experiences" ? uploadAPI.addExperience : uploadAPI.addProject;
-      await saveEntry(entry);
+      await saveEntry({ [type]: [entry] });
       setManualEntries((current) => ({
         ...current,
         [type]: [...current[type], entry],
