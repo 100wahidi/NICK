@@ -11,7 +11,8 @@ The home page introduces the workflow with a three-step visual guide and a gener
 <img width="1900" height="867" alt="image" src="https://github.com/user-attachments/assets/084dd755-b140-42db-a406-7c65890137a4" />
 
 
-<img width="810" height="412" alt="image" src="https://github.com/user-attachments/assets/20c6d650-d4e6-4663-a131-3180ba7fbe57" />
+<img width="945" height="435" alt="image" src="https://github.com/user-attachments/assets/16234c00-f3b5-4ba0-92fc-db394fc4e84d" />
+
 
 
 
