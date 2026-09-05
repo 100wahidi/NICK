@@ -9,6 +9,7 @@ import { useOfferExtraction } from "../hooks/service/useOfferExtraction";
 import { useCvIngestion } from "../hooks/service/useCvIngestion";
 import { useMatchRetrieval } from "../hooks/service/useMatchRetrieval";
 import { useCvGeneration } from "../hooks/service/useCvGeneration";
+import { uploadAPI } from "../API_Settings/api";
 
 const initialInsights = {
   title: "",
@@ -33,6 +34,8 @@ export default function ServiceWorkflowPage() {
   const [manualSkills, setManualSkills] = useState([]);
   const [cvFile, setCvFile] = useState(null);
   const [cvStats, setCvStats] = useState(null);
+  const [manualEntries, setManualEntries] = useState({ experiences: [], projects: [] });
+  const [savingEntryType, setSavingEntryType] = useState(null);
   const [matches, setMatches] = useState({ projects: [], experiences: [] });
   const [selectedProjects, setSelectedProjects] = useState([]);
   const [selectedExperiences, setSelectedExperiences] = useState([]);
@@ -121,6 +124,28 @@ export default function ServiceWorkflowPage() {
     ingestCv.mutate(file);
   };
 
+  const handleAddManualEntry = async (type, entry) => {
+    setSavingEntryType(type);
+    try {
+      const saveEntry = type === "experiences" ? uploadAPI.addExperience : uploadAPI.addProject;
+      await saveEntry(entry);
+      setManualEntries((current) => ({
+        ...current,
+        [type]: [...current[type], entry],
+      }));
+      setFeedback({ error: "", success: `${type === "experiences" ? "Experience" : "Project"} added to your profile.` });
+    } catch (error) {
+      setFeedback({ error: getMessage(error, `Could not save this ${type === "experiences" ? "experience" : "project"}.`), success: "" });
+      throw error;
+    } finally {
+      setSavingEntryType(null);
+    }
+  };
+
+  const handleContinue = async () => {
+    handleRetrieve();
+  };
+
   const handleAddSkill = (event) => {
     event.preventDefault();
     const skill = manualSkill.trim();
@@ -183,10 +208,13 @@ export default function ServiceWorkflowPage() {
             onRemoveSkill={(skill) => setManualSkills((current) => current.filter((item) => item !== skill))}
             cvFile={cvFile}
             cvStats={cvStats}
+            manualEntries={manualEntries}
             uploading={ingestCv.isPending}
+            savingEntryType={savingEntryType}
             onUploadCv={handleCvUpload}
+            onAddManualEntry={handleAddManualEntry}
             onBack={() => setStep(1)}
-            onContinue={handleRetrieve}
+            onContinue={handleContinue}
           />
         )}
 
