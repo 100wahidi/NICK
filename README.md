@@ -8,9 +8,8 @@ The interface is intentionally focused: extract the offer, enrich the profile, s
 
 The home page introduces the workflow with a three-step visual guide and a generated-CV preview.
 
-| Generated CV preview | Alternate resume reference |
-| --- | --- |
-| ![Generated CV preview](src/pages/assets/CvImage.png) | ![Resume reference](src/pages/assets/image.png) |
+| Generated CV preview
+| ![Generated CV preview](src/pages/assets/CvImage.png) 
 
 ## User Flow
 
