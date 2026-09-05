@@ -7,10 +7,13 @@ The interface is intentionally focused: extract the offer, enrich the profile, s
 ## Product Preview
 
 The home page introduces the workflow with a three-step visual guide and a generated-CV preview.
+
 <img width="1900" height="867" alt="image" src="https://github.com/user-attachments/assets/084dd755-b140-42db-a406-7c65890137a4" />
 
-| Generated CV preview
-| ![Generated CV preview](src/pages/assets/CvImage.png) 
+
+<img width="810" height="412" alt="image" src="https://github.com/user-attachments/assets/20c6d650-d4e6-4663-a131-3180ba7fbe57" />
+
+
 
 ## User Flow
 
