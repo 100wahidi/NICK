@@ -6,9 +6,8 @@ function RAG() {
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  // ✅ Upload PDF
   const uploadFile = async () => {
-    if (!file) return alert("Please select a PDF");
+    if (!file) return alert("Please select a resume PDF");
 
     const formData = new FormData();
     formData.append("file", file);
@@ -16,16 +15,16 @@ function RAG() {
     setLoading(true);
 
     try {
-      const res = await fetch("http://127.0.0.1:8000/upload", {
+      const res = await fetch("https://alice-production-9ec8.up.railway.app/upload", {
         method: "POST",
         body: formData
       });
 
-      const data = await res.json();
+      await res.json();
 
       setMessages((prev) => [
         ...prev,
-        { role: "system", content: "✅ Document uploaded successfully" }
+        { role: "system", content: "✅ Resume profile uploaded successfully" }
       ]);
 
     } catch (error) {
@@ -35,11 +34,9 @@ function RAG() {
     setLoading(false);
   };
 
-  // ✅ Ask question
   const askQuestion = async () => {
     if (!question) return;
 
-    // add user message
     setMessages((prev) => [
       ...prev,
       { role: "user", content: question }
@@ -58,7 +55,6 @@ function RAG() {
 
       const data = await res.json();
 
-      // add bot response
       setMessages((prev) => [
         ...prev,
         { role: "assistant", content: data.answer }
@@ -74,20 +70,17 @@ function RAG() {
 
   return (
     <div className="rag-container">
+      <h1>📄 Resume knowledge assistant</h1>
 
-      <h1>📚 RAG Book Analyzer</h1>
-
-      {/* ✅ Upload section */}
       <div className="upload-section">
         <input
           type="file"
           accept="application/pdf"
           onChange={(e) => setFile(e.target.files[0])}
         />
-        <button onClick={uploadFile}>Upload PDF</button>
+        <button onClick={uploadFile}>Upload resume PDF</button>
       </div>
 
-      {/* ✅ Chat area */}
       <div className="chat-box">
         {messages.map((msg, index) => (
           <div key={index} className={`message ${msg.role}`}>
@@ -96,20 +89,18 @@ function RAG() {
           </div>
         ))}
 
-        {loading && <p className="loading">⏳ Thinking...</p>}
+        {loading && <p className="loading">⏳ Analyzing profile...</p>}
       </div>
 
-      {/* ✅ Input section */}
       <div className="input-section">
         <input
           type="text"
-          placeholder="Ask something about the book..."
+          placeholder="Ask about experience, skills, or role fit..."
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
         />
         <button onClick={askQuestion}>Send</button>
       </div>
-
     </div>
   );
 }

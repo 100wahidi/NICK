@@ -1,17 +1,28 @@
-import React from "react";
 import { Outlet } from "react-router-dom"; // <-- Crucial pour le Nested Routing
 import Header from "./Header";
+import Footer from "./Footer";
+import BackGround from "./assets/BackGround.png"; 
 
 function MainLayout() {
   return (
-    <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
-      {/* Reste monté en permanence (évite le clignotement) */}
-      <Header />
-      
-      {/* Zone dynamique où React Router va injecter vos pages enfants */}
-      <main style={{ flex: 1, width: "100%" }}>
-        <Outlet /> 
-      </main>
+    <div className="app-shell">
+      <div
+        className="app-background"
+        style={{ backgroundImage: `url(${BackGround})` }}
+        aria-hidden="true"
+      />
+
+      <div className="app-overlay" aria-hidden="true" />
+
+      <div className="app-content">
+        <Header />
+
+        <main>
+          <Outlet />
+        </main>
+
+        <Footer />
+      </div>
     </div>
   );
 }

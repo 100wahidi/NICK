@@ -1,21 +1,16 @@
 import { useNavigate } from "react-router-dom";
 
-/**
- * Composant de secours et de retour d'information (Erreurs, 404, Non autorisé).
- * Conçu pour être MVP, robuste et conforme aux standards de production.
- */
 function EmptyPage({ 
-  title = "Page non trouvée", 
-  message = "La page que vous recherchez n'existe pas.", 
+  title = "Page not found", 
+  message = "The page you are looking for does not exist or is unavailable.", 
   icon = "🔍", 
-  buttonText = "Retour à l'accueil", 
+  buttonText = "Back to home", 
   redirectTo = "/" 
 }) {
   const navigate = useNavigate();
 
   const handleAction = () => {
     if (redirectTo === 0) {
-      // Cas spécial : Rafraîchir la page actuelle
       navigate(0);
     } else {
       navigate(redirectTo);
@@ -25,7 +20,6 @@ function EmptyPage({
   return (
     <div className="auth-page" role="alert" aria-live="assertive">
       <div className="auth-card" style={{ textAlign: "center", padding: "30px" }}>
-        {/* Icône / Émoji visuel */}
         <div 
           style={{ fontSize: "3.5rem", marginBottom: "15px" }} 
           aria-hidden="true"
@@ -33,7 +27,6 @@ function EmptyPage({
           {icon}
         </div>
 
-        {/* Titre du message */}
         <h2 style={{ 
           fontSize: "1.5rem", 
           fontWeight: "600", 
@@ -43,7 +36,6 @@ function EmptyPage({
           {title}
         </h2>
 
-        {/* Description / Explication */}
         <p style={{ 
           fontSize: "0.95rem", 
           lineHeight: "1.5", 
@@ -53,7 +45,6 @@ function EmptyPage({
           {message}
         </p>
 
-        {/* Bouton d'action principal conditionnel */}
         {buttonText && (
           <button 
             type="button"

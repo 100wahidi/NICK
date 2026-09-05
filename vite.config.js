@@ -1,9 +1,18 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/postcss'
+import autoprefixer from 'autoprefixer'
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  // Remplacez <nom-de-votre-depot> par le nom exact de votre dépôt GitHub (ex: 'nick')
-  base: '/NICK/', 
+  css: {
+    postcss: {
+      plugins: [
+        tailwindcss(),
+        autoprefixer(),
+      ],
+    },
+  },
+  base: '/NICK/',
 })

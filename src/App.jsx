@@ -3,10 +3,10 @@ import MainLayout from "./components/layout/MainLayout";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import SignIn from "./pages/SignIn";
-import Dashboard from "./pages/Dashboard";
-import RAG from "./pages/RAG"; // ✅ NEW
+import Service from "./pages/Service";
 import ProtectedRoute from "./components/ProtectedRoute";
-import EmptyPage from "./components/EmptyPage";
+import EmptyPage from "./components/ui/EmptyPage";
+
 
 function App() {
   return (
@@ -21,10 +21,8 @@ function App() {
 
         {/* 🔐 Protected routes */}
         <Route element={<ProtectedRoute />}>
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/generate" element={<Service />} />
 
-          {/* ✅ NEW RAG PAGE */}
-          <Route path="/analyser" element={<RAG />} />
         </Route>
 
         {/* 🧭 404 */}
