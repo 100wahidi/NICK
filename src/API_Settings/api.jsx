@@ -103,6 +103,7 @@ export async function apiRequest({
     return result;
   } catch (error) {
     console.error(`API Error [${method} ${endpoint}]:`, error);
+    console.error('APi error : backend server not found')
     throw error;
   }
 }
